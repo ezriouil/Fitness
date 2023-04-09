@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">hk club app</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="full_name">full name</string>
+    <string name="new_client">New Client</string>
+    <string name="gender">gender</string>
+    <string name="year">YEAR</string>
+    <string name="month">MONTH</string>
+    <string name="day">DAY</string>
+    <string name="hour">HOUR</string>
+    <string name="ok">OK</string>
+    <string name="price">price</string>
+    <string name="hk_club">HK CLUB</string>
+    <string name="dh">DH</string>
+    <string name="_30d_00h_00m_00s">30D 00H 00M 00S</string>
+    <string name="men">MEN</string>
+    <string name="mohamed_ezriouil">MOHAMED EZRIOUIL</string>
+    <string name="_70">70</string>
+    <string name="are_you_sure">!! Are You Sure !!</string>
+    <string name="no">NO</string>
+    <string name="yes">YES</string>
+    <string name="add">add</string>
+    <string name="remove">remove</string>
+    <string name="clients_must_paid">Clients Must Paid</string>
+</resources>

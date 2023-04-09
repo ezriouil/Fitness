@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_app"
+    tools:context=".fragments.Notification">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/clients_must_paid"
+        android:padding="7sp"
+        android:layout_marginBottom="5sp"
+        android:background="@drawable/bg_list_view"
+        android:layout_gravity="center"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_marginTop="5sp"
+        android:textSize="20sp"
+        android:letterSpacing="0.2" />
+    <ListView
+        android:id="@+id/myListView"
+        android:layoutAnimation="@anim/layout_anim"
+        android:layout_width="match_parent"
+        tools:listitem="@layout/item_view_for_notification"
+        android:layout_height="match_parent"
+        android:layout_margin="7sp"/>
+</LinearLayout>

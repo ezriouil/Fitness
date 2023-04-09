@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_app"
+    android:orientation="vertical"
+    tools:context=".ScreenAnim">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mohamed Ezriouil"
+        android:layout_gravity="center"
+        android:layout_marginTop="10sp"
+        android:textColor="@color/white"
+        android:padding="10sp"
+        android:background="@drawable/bg_list_view"
+        android:textSize="30sp" />
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/splash"
+        app:lottie_autoPlay="true" />
+</LinearLayout>
