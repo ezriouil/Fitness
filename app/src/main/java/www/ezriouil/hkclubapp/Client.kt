@@ -9,5 +9,5 @@ var sale : List<Client> = sale_private.toList()
 val sale_notification = mutableListOf<Client>()
 
 fun add(client:Client) = sale_private.add(client)
-fun delete(clientPosition:Int) =sale_private.removeAt(clientPosition)
+fun delete(client: Client) = sale_private.remove(client)
 

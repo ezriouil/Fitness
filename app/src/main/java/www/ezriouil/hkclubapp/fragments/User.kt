@@ -12,22 +12,21 @@ import android.widget.Toast
 import www.ezriouil.hkclubapp.Client
 import www.ezriouil.hkclubapp.add
 import www.ezriouil.hkclubapp.databinding.UserBinding
-import www.ezriouil.hkclubapp.recyclerView.MyAdapterForRecyclerView
-import www.ezriouil.hkclubapp.recyclerView.RecyclerListener
+import www.ezriouil.hkclubapp.recyclerView.Adapter
+import www.ezriouil.hkclubapp.recyclerView.Listener
 import www.ezriouil.hkclubapp.sale
 import www.ezriouil.hkclubapp.sql.DataBase
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalDateTime
 
-class User : Fragment() , RecyclerListener{
+class User : Fragment() , Listener{
+
     private lateinit var binding: UserBinding
-    private lateinit var myAdapterForRecyclerView: MyAdapterForRecyclerView
+    private lateinit var adapter: Adapter
     private lateinit var dataBase: DataBase
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = UserBinding.inflate(inflater)
         return binding.root
     }
@@ -35,7 +34,7 @@ class User : Fragment() , RecyclerListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        myAdapterForRecyclerView = MyAdapterForRecyclerView(requireContext(),sale,this)
+        adapter = Adapter(requireContext(),sale,this)
         dataBase = DataBase(requireContext())
         //Menu Gender
         binding.EditTextGender.setAdapter(ArrayAdapter(requireContext(),android.R.layout.select_dialog_item,listOf("MEN","WOMEN")))
@@ -77,7 +76,7 @@ class User : Fragment() , RecyclerListener{
     }
     override fun addClient(client: Client) {
         add(client)
-        myAdapterForRecyclerView.updateMyData(sale)
+        adapter.updateMyData(sale)
     }
     override fun cardOfClient(client: Client,index:Int){TODO()}
 }
