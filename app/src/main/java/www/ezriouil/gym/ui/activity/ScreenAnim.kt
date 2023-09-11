@@ -17,6 +17,6 @@ class ScreenAnim : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             this@ScreenAnim.finish()
-        }, 300)
+        }, 3000)
     }
 }
