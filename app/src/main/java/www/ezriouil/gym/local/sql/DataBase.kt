@@ -1,4 +1,4 @@
-package www.ezriouil.hkclubapp.sql
+package www.ezriouil.gym.local.sql
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
@@ -7,8 +7,10 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import www.ezriouil.hkclubapp.Client
+import www.ezriouil.gym.local.model.Client
 
 class DataBase(context: Context) : SQLiteOpenHelper(context, DB.NAME, null, DB.VERSION) {
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) = TODO()
@@ -64,8 +66,10 @@ class DataBase(context: Context) : SQLiteOpenHelper(context, DB.NAME, null, DB.V
             "${DB.TIME} TEXT " +
             ")"
 
-    fun readDB(): List<Client> {
-        val data = ArrayList<Client>()
+
+    fun readDB_ByFlow(): Flow<List<Client>> {
+        val data = MutableStateFlow<List<Client>>(emptyList())
+        val _data = mutableListOf<Client>()
         GlobalScope.launch(Dispatchers.IO) {
             val cursor =
                 this@DataBase.readableDatabase.rawQuery("SELECT * FROM ${DB.TABLE_NAME}", null)
@@ -75,11 +79,11 @@ class DataBase(context: Context) : SQLiteOpenHelper(context, DB.NAME, null, DB.V
                 val gender = cursor.getString(2)
                 val time = cursor.getString(3)
                 val client = Client(fullName, price, gender, time.toLong())
-                data.add(client)
+                _data.add(client)
             }
             cursor.close()
+            data.emit(_data)
         }
-
         return data
     }
 }

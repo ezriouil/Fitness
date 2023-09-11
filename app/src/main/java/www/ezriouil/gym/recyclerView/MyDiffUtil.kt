@@ -1,9 +1,9 @@
-package www.ezriouil.hkclubapp.recyclerView
+package www.ezriouil.gym.recyclerView
 
 import androidx.recyclerview.widget.DiffUtil
-import www.ezriouil.hkclubapp.Client
+import www.ezriouil.gym.local.model.Client
 
-class MyDiffUtil(private val myOldListClient:List<Client>,private val myNewListClient:List<Client>) : DiffUtil.Callback() {
+class MyDiffUtil(private val myOldListClient:List<Client>, private val myNewListClient:List<Client>) : DiffUtil.Callback() {
 
     override fun getOldListSize() = myOldListClient.size
 

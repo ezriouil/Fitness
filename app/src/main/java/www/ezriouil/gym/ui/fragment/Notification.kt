@@ -1,4 +1,4 @@
-package www.ezriouil.hkclubapp.fragments
+package www.ezriouil.gym.ui.fragment
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -10,24 +10,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import www.ezriouil.hkclubapp.Client
-import www.ezriouil.hkclubapp.MyArrayAdapterForListView
-import www.ezriouil.hkclubapp.R
-import www.ezriouil.hkclubapp.databinding.NotificationBinding
-import www.ezriouil.hkclubapp.sale_notification
-import www.ezriouil.hkclubapp.sql.DataBase
+import www.ezriouil.gym.R
+import www.ezriouil.gym.databinding.NotificationBinding
+import www.ezriouil.gym.local.model.Client
+import www.ezriouil.gym.local.model.sale_notification
+import www.ezriouil.gym.local.sql.DataBase
+import www.ezriouil.gym.recyclerView.MyArrayAdapterForListView
 
 class Notification : Fragment() {
+
     private lateinit var binding: NotificationBinding
     private lateinit var myNotification: Notification.Builder
-    private lateinit var dataBase: DataBase
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = NotificationBinding.inflate(inflater)
-        dataBase = DataBase(requireContext())
-        sale_notification.addAll(dataBase.readDB())
         return binding.root
     }
 

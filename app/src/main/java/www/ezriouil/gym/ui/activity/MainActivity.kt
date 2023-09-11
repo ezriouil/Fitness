@@ -1,27 +1,31 @@
-package www.ezriouil.hkclubapp
+package www.ezriouil.gym.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import www.ezriouil.hkclubapp.databinding.ActivityMainBinding
-import www.ezriouil.hkclubapp.fragments.*
+import www.ezriouil.gym.R
+import www.ezriouil.gym.databinding.ActivityMainBinding
+import www.ezriouil.gym.local.model.sale_notification
+import www.ezriouil.gym.ui.fragment.Home
+import www.ezriouil.gym.ui.fragment.Notification
+import www.ezriouil.gym.ui.fragment.User
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        binding.bottomNavigationView.setItemSelected(R.id.home_nav,true)
+        binding.bottomNavigationView.setItemSelected(R.id.home_nav, true)
         fragmentReplace(Home())
         binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it){
-                R.id.home_nav ->{
+            when (it) {
+                R.id.home_nav -> {
                     fragmentReplace(Home())
                     if (sale_notification.isNotEmpty()) badge()
                 }
-                R.id.user_nav ->{
+                R.id.user_nav -> {
                     fragmentReplace(User())
                     if (sale_notification.isNotEmpty()) badge()
                 }
@@ -32,15 +36,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun fragmentReplace(fragment: Fragment) {
         val supportFragment = supportFragmentManager.beginTransaction()
-        supportFragment.replace(R.id.frame_layout,fragment)
+        supportFragment.replace(R.id.frame_layout, fragment)
         supportFragment.commitNow()
     }
-    private fun badge(){
+
+    private fun badge() {
         binding.bottomNavigationView.showBadge(R.id.notification_nav, sale_notification.size)
     }
-    private fun clearBadge(){
+
+    private fun clearBadge() {
         binding.bottomNavigationView.dismissBadge(R.id.notification_nav)
     }
 }

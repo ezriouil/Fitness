@@ -10,5 +10,5 @@
     android:layoutAnimation="@anim/layout_anim"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     android:orientation="vertical"
-    tools:context=".fragments.Home"
+    tools:context="www.ezriouil.gym.ui.fragment.Home"
     xmlns:tools="http://schemas.android.com/tools" />

@@ -7,17 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_app"
     android:orientation="vertical"
-    tools:context=".ScreenAnim">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mohamed Ezriouil"
-        android:layout_gravity="center"
-        android:layout_marginTop="10sp"
-        android:textColor="@color/white"
-        android:padding="10sp"
-        android:background="@drawable/bg_list_view"
-        android:textSize="30sp" />
+    tools:context="www.ezriouil.gym.ui.activity.ScreenAnim">
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -1,4 +1,4 @@
-package www.ezriouil.hkclubapp.fragments
+package www.ezriouil.gym.ui.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -12,11 +12,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.textfield.TextInputEditText
-import www.ezriouil.hkclubapp.*
-import www.ezriouil.hkclubapp.databinding.HomeBinding
-import www.ezriouil.hkclubapp.recyclerView.Adapter
-import www.ezriouil.hkclubapp.recyclerView.Listener
-import www.ezriouil.hkclubapp.sql.DataBase
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import www.ezriouil.gym.R
+import www.ezriouil.gym.databinding.HomeBinding
+import www.ezriouil.gym.local.model.Client
+import www.ezriouil.gym.local.model.sale
+import www.ezriouil.gym.local.model.sale_notification
+import www.ezriouil.gym.local.sql.DataBase
+import www.ezriouil.gym.recyclerView.Adapter
+import www.ezriouil.gym.recyclerView.Listener
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 
@@ -32,7 +37,18 @@ class Home : Fragment(), Listener {
     ): View {
         binding = HomeBinding.inflate(inflater)
         dataBase = DataBase(requireContext())
-        sale = dataBase.readDB()
+        sale.clear()
+        sale_notification.clear()
+        GlobalScope.launch {
+            dataBase.readDB_ByFlow().collect { clients ->
+                sale.addAll(clients)
+                for (item in clients){
+                    if (item.time - System.currentTimeMillis()<0){
+                        sale_notification.add(item)
+                    }
+                }
+            }
+        }
         adapter = Adapter(requireContext(), sale, this)
         adapter.updateMyData(sale)
         return binding.root
@@ -104,15 +120,12 @@ class Home : Fragment(), Listener {
                         client.time.toString(),
                         millis
                     )
-                    sale[index].fullName = name.text.toString()
-                    sale[index].price = price.text.toString().toInt()
-                    sale[index].time = millis
+                    adapter.notifyDataSetChanged()
                     Toast.makeText(
                         requireContext(),
-                        "has been modifed successfully ${client.fullName.uppercase()}",
+                        "has been modified successfully ${client.fullName.uppercase()}",
                         Toast.LENGTH_SHORT
                     ).show()
-                    adapter.notifyDataSetChanged()
                     if (sale_notification.contains(client)) {
                         sale_notification.remove(client)
                     }
@@ -139,12 +152,13 @@ class Home : Fragment(), Listener {
                 }
             viewOfRemove.findViewById<Button>(R.id.remove_bottom_sheet_remove_Yes)
                 .setOnClickListener {
-                    delete(client)
                     if (sale_notification.contains(client)) {
                         sale_notification.remove(client)
                     }
-                    DataBase(requireContext()).deleteFromDB(client.time.toString())
-                    adapter.updateMyData(sale)
+                    GlobalScope.launch {
+                        DataBase(requireContext()).deleteFromDB(client.time.toString())
+                    }
+                    adapter.updateData(sale)
                     Toast.makeText(
                         requireContext(),
                         "${client.fullName.uppercase()} is deleted",

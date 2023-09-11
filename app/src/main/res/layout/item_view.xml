@@ -1,73 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="150dp"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:id="@+id/myCardView"
-    android:layout_margin="7dp"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    app:cardCornerRadius="10dp">
 
-    <androidx.cardview.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
-        app:cardCornerRadius="20sp"
-        android:layout_height="120dp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:background="@drawable/number_picker_bg">
-
-            <TextView
-                android:id="@+id/cardViewFullName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="8dp"
-                android:layout_centerHorizontal="true"
-                android:text="name : mohamed ezriouil"
-                android:textSize="20sp" />
-            <TextView
-                android:id="@+id/cardViewGender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cardViewFullName"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/black"
-                android:text="gender : men"
-                android:textSize="20sp"
-                tools:ignore="RelativeOverlap" />
-            <TextView
-                android:id="@+id/cardViewPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cardViewGender"
-                android:layout_marginTop="8dp"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/black"
-                android:text="price : 70"
-                android:textSize="20sp"
-                tools:ignore="RelativeOverlap" />
-
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/cardViewTime"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
         android:background="@drawable/background_item_view"
-        android:padding="12dp"
-        android:text="@string/_30d_00h_00m_00s"
-        android:textColor="#000000"
-        android:textSize="20sp" />
-</RelativeLayout>
+        android:paddingStart="6dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/cardViewFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:text="- name : mohamed ezriouil"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
+        <TextView
+            android:id="@+id/cardViewGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardViewFullName"
+            android:text="- gender : men"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
+        <TextView
+            android:id="@+id/cardViewPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardViewGender"
+            android:text="- price : 70 DH"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
+        <TextView
+            android:id="@+id/cardViewTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardViewPrice"
+            android:text="- Timer : 50 DAY 15 hours 6 minutes"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
+        <ImageButton
+            android:id="@+id/cardViewBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_detaile"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/background_item_view"
+            android:padding="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"/>
 
-
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

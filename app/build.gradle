@@ -7,7 +7,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "www.ezriouil.hkclubapp"
+        applicationId "www.ezriouil.gym"
         minSdk 26
         targetSdk 32
         versionCode 1

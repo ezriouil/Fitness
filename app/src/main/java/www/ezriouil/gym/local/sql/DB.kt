@@ -1,4 +1,4 @@
-package www.ezriouil.hkclubapp.sql
+package www.ezriouil.gym.local.sql
 
 object DB {
     const val NAME = "dataBaseOfHkClubApp"

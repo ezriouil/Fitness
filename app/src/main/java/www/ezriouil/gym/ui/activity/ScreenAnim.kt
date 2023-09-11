@@ -1,10 +1,11 @@
-package www.ezriouil.hkclubapp
+package www.ezriouil.gym.ui.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
+import www.ezriouil.gym.R
 
 class ScreenAnim : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,9 +14,9 @@ class ScreenAnim : AppCompatActivity() {
         supportActionBar?.hide()
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             this@ScreenAnim.finish()
-        },6300)
+        }, 300)
     }
 }

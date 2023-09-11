@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background_app"
-    tools:context=".fragments.Notification">
+    tools:context="www.ezriouil.gym.ui.fragment.Notification">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
